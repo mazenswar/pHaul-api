@@ -5,13 +5,21 @@ class UsersController < ApplicationController
     end
 
     def create
-        user = User.create(user_params)
-        render json: user, include: :reservations
+        user = User.new(user_params)
+        if user.save 
+            render json: user, include: :reservations
+        else
+            render json: {error: 'failed to create user'}, status: 500
+        end
     end
 
     def login
         user = User.find_by(user_params)
-        render json: user, include: :reservations
+        if user.id    
+            render json: user, include: :reservations
+        else
+            render json: {error: 'incorrect email'}
+        end
     end
 
     def user_params

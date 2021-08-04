@@ -60,10 +60,34 @@ trucks = [
     } 
 ]
 
+reservations = [
+    {
+        start_time: DateTime.new(2021, 8, 14, 9),
+        end_time: DateTime.new(2021, 8, 14, 12),
+        total_price: 60,
+        user_id: 1,
+        truck_id: 1
+    },
+    {
+        start_time: DateTime.new(2021, 8, 10, 13),
+        end_time: DateTime.new(2021, 8, 10, 18),
+        total_price: 100,
+        user_id: 1,
+        truck_id: 1
+    },
+    {
+        start_time: DateTime.new(2021, 8, 7, 6),
+        end_time: DateTime.new(2021, 8, 7, 12),
+        total_price: 120,
+        user_id: 1,
+        truck_id: 1
+    }
+]
 
 
 users.map {|u| User.create(u)}
 trucks.map {|t| Truck.create(t)}
+reservations.map { |res|  Reservation.create(res) }
 
 
 puts '*********** Seeding Complete ***********'
